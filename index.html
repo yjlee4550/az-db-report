@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0115)file:///C:/Users/yjlee/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_2.html -->
+<!-- saved from url=(0115)file:///C:/Users/yjlee/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_3.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -399,22 +399,38 @@ const lsGet = k => { try { return localStorage.getItem(k); } catch(e) { return n
 const lsSet = (k,v) => { try { localStorage.setItem(k,v); } catch(e) {} };
 
 /* ── INIT ── */
-(async function init() {
+function waitForSupabase(cb) {
+  if (window.supabase && window.supabase.createClient) {
+    cb();
+  } else {
+    setTimeout(() => waitForSupabase(cb), 100);
+  }
+}
+
+waitForSupabase(async function() {
   const url = lsGet('az_sb_url');
   const key = lsGet('az_sb_key');
   if (!url || !key) { showPage('setup'); return; }
-  initSupabase(url, key);
-  const { data: { session } } = await supabase.auth.getSession();
-  if (session) {
-    await onLogin(session.user);
-  } else {
-    showPage('auth');
+  try {
+    initSupabase(url, key);
+    const { data: { session } } = await supabase.auth.getSession();
+    if (session) {
+      await onLogin(session.user);
+    } else {
+      showPage('auth');
+    }
+  } catch(e) {
+    showPage('setup');
   }
-})();
+});
 
 /* ── Supabase init ── */
+function getCreateClient() {
+  if (window.supabase && window.supabase.createClient) return window.supabase.createClient;
+  throw new Error('Supabase 라이브러리 로딩 중입니다. 잠시 후 다시 시도해 주세요.');
+}
 function initSupabase(url, key) {
-  const { createClient } = window.supabase;
+  const createClient = getCreateClient();
   supabase = createClient(url, key);
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT') { showPage('auth'); currentUser = null; }
@@ -430,7 +446,7 @@ async function connectSupabase() {
   btn.disabled = true; btn.textContent = '연결 중...';
   setSetupStatus('', '');
   try {
-    const { createClient } = window.supabase;
+    const createClient = getCreateClient();
     const client = createClient(url, key);
     await client.from('weekly_reports').select('id').limit(1);
     lsSet('az_sb_url', url); lsSet('az_sb_key', key);
