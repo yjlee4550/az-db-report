@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0115)file:///C:/Users/USER/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_10.html -->
+<!-- saved from url=(0115)file:///C:/Users/USER/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_12.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
@@ -468,13 +468,12 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
 <div class="loading" id="loading"><div class="loading-spinner"></div></div>
 <div class="toast" id="toast"></div>
 
-
-// ── 버전 체크 &amp; 자동 새로고침 ──
+<script>
+// ── 버전 체크 & 자동 새로고침 ──
 (function() {
-  const BUILD = '20260616232527';
+  const BUILD = '20260616233552';
   const STORED = localStorage.getItem('az_build');
-  if (STORED &amp;&amp; STORED !== BUILD) {
-    // 새 버전 감지 → 자동 새로고침
+  if (STORED && STORED !== BUILD) {
     localStorage.setItem('az_build', BUILD);
     location.reload(true);
     return;
@@ -482,7 +481,6 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
   localStorage.setItem('az_build', BUILD);
 })();
 
-<script>
 // ════════════════════════════════════════════════════════
 //  CONSTANTS & STATE
 // ════════════════════════════════════════════════════════
