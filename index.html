@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0114)file:///C:/Users/USER/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_8.html -->
+<!-- saved from url=(0114)file:///C:/Users/USER/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_9.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -585,15 +585,14 @@ async function onLogin(user){
   document.getElementById('iem').textContent=curEmail;
   const ym=nowYM(),yr=ym.slice(0,4),mo=ym.slice(5,7);
   dashYM=ym;inputYM=ym;
-  ['dash-year','m-year','i-year'].forEach(id=>buildYearSel(id,yr));
-  ['dash-month','m-month','i-month'].forEach(id=>setMonSel(id,mo));
+  ['dash-year','m-year'].forEach(id=>buildYearSel(id,yr));
+  ['dash-month','m-month'].forEach(id=>setMonSel(id,mo));
   document.getElementById('daily-date').value=todayStr();
   document.getElementById('d-date').value=todayStr();
   showPg('app');setConnDot('ld');
   await ensureUserRole();
   await checkRole();
   buildPills('dpills',dashW,w=>{dashW=w;renderWeekly();});
-  buildPills('ipipills',inputW,w=>{inputW=w;loadWeeklyForm();});
   await renderMonthly();
   loadWeeklyForm();
   atimer=setInterval(()=>{
@@ -625,13 +624,7 @@ function showTab(t){
   if(t==='input'){loadDailyForm();}
   if(t==='admin')renderAdmin();
 }
-function switchITab(t){
-  ['weekly','daily'].forEach(k=>{
-    document.getElementById('if-'+k).classList.toggle('show',k===t);
-    document.getElementById('it-'+k).classList.toggle('on',k===t);
-  });
-  if(t==='daily')loadDailyForm();
-}
+// switchITab 제거됨 (주간 입력폼 통합)
 function setConnDot(s){document.getElementById('cdot').className='cdot '+s;}
 function showLoading(v){document.getElementById('lmask').classList.toggle('show',v);}
 function setMsg(id,msg,type){const el=document.getElementById(id);el.textContent=msg;el.className='amsg'+(type?' '+type:'');}
@@ -765,44 +758,6 @@ async function renderMonthly(){
     }
   }catch(e){setConnDot('off');toast('❌ '+e.message,'te');}
   finally{showLoading(false);}
-}
-
-// ── WEEKLY INPUT ──
-async function loadWeeklyForm(){
-  inputYM=getYM('i-year','i-month');
-  document.getElementById('wiftitle').textContent=inputYM+' '+inputW+' 주간 실적 입력 — '+curName;
-  const pw=document.getElementById('wprevwrap');
-  try{
-    const rows=await SB.sel('weekly_reports','user_id=eq.'+curUser.id+'&year_month=eq.'+encodeURIComponent(inputYM)+'&week=eq.'+encodeURIComponent(inputW)+'&limit=1');
-    const data=rows&&rows[0];
-    if(data){
-      ['wf1','wf2','wf3','wf4','wf5','wf6'].forEach((id,i)=>{const keys=['touch','retouch','ta','resp','contract','db_count'];document.getElementById(id).value=data[keys[i]]||'';});
-      const ts=data.saved_at?new Date(data.saved_at).toLocaleString('ko-KR'):'';
-      pw.style.display='';
-      document.getElementById('wprevbox').innerHTML='<div class="prevt">✅ '+inputYM+' '+inputW+' 저장된 데이터 ('+ts+')</div><div class="prevg">'+[['신규터치',data.touch],['재터치',data.retouch],['TA',data.ta],['응답자',data.resp],['계약건',data.contract],['담당DB',data.db_count]].map(([l,v])=>'<div class="pi"><div class="piv" style="color:'+(l==='계약건'?'var(--gn)':'var(--b2)')+'">'+( v||0)+'</div><div class="pil">'+l+'</div></div>').join('')+'</div>';
-    }else{['wf1','wf2','wf3','wf4','wf5','wf6'].forEach(id=>document.getElementById(id).value='');pw.style.display='none';}
-  }catch(e){console.error(e);}
-}
-
-async function saveWeekly(){
-  inputYM=getYM('i-year','i-month');
-  const btn=document.getElementById('wsavebtn');btn.disabled=true;btn.textContent='저장 중...';
-  try{
-    await SB.ups('weekly_reports',{user_id:curUser.id,name:curName,week:inputW,year_month:inputYM,
-      touch:parseInt(document.getElementById('wf1').value)||0,retouch:parseInt(document.getElementById('wf2').value)||0,
-      ta:parseInt(document.getElementById('wf3').value)||0,resp:parseInt(document.getElementById('wf4').value)||0,
-      contract:parseInt(document.getElementById('wf5').value)||0,db_count:parseInt(document.getElementById('wf6').value)||10,
-      saved_at:new Date().toISOString()});
-    toast('✅ '+inputYM+' '+inputW+' 저장 완료!','to');loadWeeklyForm();
-  }catch(e){toast('❌ 저장 실패: '+e.message,'te');}
-  finally{btn.disabled=false;btn.textContent='💾 저장하기';}
-}
-
-async function delWeekly(){
-  inputYM=getYM('i-year','i-month');
-  if(!confirm(inputYM+' '+inputW+' 주간 데이터를 삭제할까요?'))return;
-  try{await SB.del('weekly_reports','user_id=eq.'+curUser.id+'&year_month=eq.'+encodeURIComponent(inputYM)+'&week=eq.'+encodeURIComponent(inputW));toast('삭제됐습니다');loadWeeklyForm();}
-  catch(e){toast('❌ '+e.message,'te');}
 }
 
 // ── DAILY INPUT ──
