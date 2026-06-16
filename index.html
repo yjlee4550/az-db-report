@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0114)file:///C:/Users/USER/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_7.html -->
+<!-- saved from url=(0114)file:///C:/Users/USER/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_8.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -291,16 +291,16 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
 
   <div class="nav-tabs">
     <button class="ntab on" id="nt-monthly" onclick="showTab(&#39;monthly&#39;)">📅 월간 통계</button>
-    <button class="ntab" id="nt-weekly" onclick="showTab(&#39;weekly&#39;)">📊 주간 대시보드</button>
-    <button class="ntab" id="nt-daily" onclick="showTab(&#39;daily&#39;)">📋 일간 결산</button>
+    <button class="ntab" id="nt-weekly" onclick="showTab(&#39;weekly&#39;)">📊 주간 통계</button>
+    <button class="ntab" id="nt-daily" onclick="showTab(&#39;daily&#39;)">📋 일간 통계</button>
     <button class="ntab" id="nt-input" onclick="showTab(&#39;input&#39;)">✏️ 데이터 입력</button>
     <button class="ntab" id="nt-admin" onclick="showTab(&#39;admin&#39;)" style="display:none;">⚙️ 관리자</button>
   </div>
 
-  <!-- ① 주간 대시보드 -->
+  <!-- ① 주간 통계 -->
   <div id="v-weekly" class="ct" style="display:none;">
     <div class="hero" style="background:linear-gradient(135deg,var(--b1),var(--b2));">
-      <div><h2>주간 대시보드</h2><p id="dsub">연월과 주차를 선택하세요</p></div>
+      <div><h2>주간 통계</h2><p id="dsub">연월과 주차를 선택하세요</p></div>
       <div class="kpis">
         <div class="kpi"><div class="kpi-v" id="wkm">—</div><div class="kpi-l">참여인원</div></div>
         <div class="kpi"><div class="kpi-v" id="wkt">—</div><div class="kpi-l">총터치</div></div>
@@ -330,10 +330,10 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
     </div>
   </div>
 
-  <!-- ② 일간 결산 -->
+  <!-- ② 일간 통계 -->
   <div id="v-daily" class="ct" style="display:none;">
     <div class="hero" style="background:linear-gradient(135deg,#0A3D2E,#1A8754);">
-      <div><h2>일간 결산 현황</h2><p id="dailysub">날짜를 선택하면 당일 전체 팀 결산이 표시됩니다</p></div>
+      <div><h2>일간 통계</h2><p id="dailysub">날짜를 선택하면 당일 전체 팀 결산이 표시됩니다</p></div>
       <div class="kpis">
         <div class="kpi"><div class="kpi-v" id="dkm">—</div><div class="kpi-l">입력인원</div></div>
         <div class="kpi"><div class="kpi-v" id="dkt">—</div><div class="kpi-l">총터치</div></div>
@@ -348,7 +348,7 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
     </div>
     <div class="daily-grid" id="daily-grid"></div>
     <div class="card">
-      <div class="ch"><span class="cdot2"></span><h3 id="daily-tbl-title">일간 결산 취합표</h3></div>
+      <div class="ch"><span class="cdot2"></span><h3 id="daily-tbl-title">일간 통계 취합표</h3></div>
       <div style="overflow-x:auto;">
         <table class="stbl">
           <thead><tr><th style="text-align:left;">이름</th><th>신규터치</th><th>재터치</th><th>TA</th><th>응답자</th><th>계약건</th><th>체결율</th><th>메모</th></tr></thead>
@@ -362,7 +362,7 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
   <!-- ③ 월간 통계 -->
   <div id="v-monthly" class="ct">
     <div class="hero" style="background:linear-gradient(135deg,#0A3580,#1A6FD4);">
-      <div><h2>월간 누적 통계</h2><p id="msub">개인별 월간 전체 실적 및 주차별 흐름</p></div>
+      <div><h2>월간 통계</h2><p id="msub">개인별 월간 전체 실적 및 주차별 흐름</p></div>
       <div class="kpis">
         <div class="kpi"><div class="kpi-v" id="mm">—</div><div class="kpi-l">참여인원</div></div>
         <div class="kpi"><div class="kpi-v" id="mtot-t">—</div><div class="kpi-l">총터치</div></div>
@@ -392,7 +392,7 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
   <!-- ④ 데이터 입력 -->
   <div id="v-input" class="ct" style="display:none;">
     <div class="ihero" style="background:linear-gradient(135deg,#123585,var(--b2));">
-      <h2>✏️ 데이터 입력</h2><p>저장하면 팀 대시보드에 실시간 반영됩니다.</p>
+      <h2>✏️ 일간 통계 입력</h2><p>매일 일간 통계를 입력하면 주간·월간 통계가 자동으로 집계됩니다.</p>
     </div>
     <div class="icard">
       <div class="ict">👤 로그인 정보</div>
@@ -401,73 +401,86 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
         <div><div class="myname" id="inm">—</div><div class="myemail" id="iem">—</div></div>
       </div>
     </div>
-
-    <!-- 입력 탭 전환 -->
-    <div class="input-tabs">
-      <button class="itab on" id="it-weekly" onclick="switchITab(&#39;weekly&#39;)">📊 주간 데이터</button>
-      <button class="itab" id="it-daily" onclick="switchITab(&#39;daily&#39;)">📋 일간 결산</button>
+    <div class="notice-box">📌 날짜별로 하루 1회 입력합니다. 일간 통계가 쌓이면 주간·월간 통계가 자동 집계됩니다.</div>
+    <div class="icard" style="padding:12px 18px;">
+      <div class="ict" style="margin-bottom:10px;">📅 날짜 선택</div>
+      <input type="date" class="date-input" id="d-date" onchange="loadDailyForm()">
     </div>
-
-    <!-- 주간 입력 -->
-    <div class="iform show" id="if-weekly">
-      <div class="icard" style="padding:12px 18px;">
-        <div class="ict" style="margin-bottom:10px;">📅 연월 · 주차 선택</div>
-        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-          <select class="psel" id="i-year" onchange="loadWeeklyForm()"></select>
-          <select class="psel" id="i-month" onchange="loadWeeklyForm()"><option value="01">1월</option><option value="02">2월</option><option value="03">3월</option><option value="04">4월</option><option value="05">5월</option><option value="06">6월</option><option value="07">7월</option><option value="08">8월</option><option value="09">9월</option><option value="10">10월</option><option value="11">11월</option><option value="12">12월</option></select>
-          <div class="pills" id="ipipills"></div>
+    <div class="icard" id="dprevwrap" style="display:none;padding:14px 18px;">
+      <div class="prev" id="dprevbox"></div>
+    </div>
+    <div class="icard">
+      <div class="ict" id="diftitle">일간 통계 입력</div>
+      <div class="igrid">
+        <div class="ifd"><label>① 신규 터치 횟수</label><div class="ih">오늘 첫 터치한 신규 DB 수</div><input type="number" id="df1" min="0" placeholder="0"></div>
+        <div class="ifd"><label>② 재터치 횟수</label><div class="ih">오늘 재접촉 합산</div><input type="number" id="df2" min="0" placeholder="0"></div>
+        <div class="ifd"><label>③ TA 횟수</label><div class="ih">오늘 전화 시도 횟수</div><input type="number" id="df3" min="0" placeholder="0"></div>
+        <div class="ifd"><label>④ 응답자 수</label><div class="ih">오늘 실제 응답 인원</div><input type="number" id="df4" min="0" placeholder="0"></div>
+        <div class="ifd"><label>⑤ 계약 건수</label><div class="ih">오늘 최종 체결 계약</div><input type="number" id="df5" min="0" placeholder="0"></div>
+        <div class="ifd" style="grid-column:1/-1;"><label>📝 메모 (특이사항, 상담 내용 등)</label>
+          <textarea id="df-memo" placeholder="오늘 상담 특이사항, 거절 유형, 성공 사례 등 자유롭게 기록하세요..." rows="3"></textarea>
         </div>
       </div>
-      <div class="icard" id="wprevwrap" style="display:none;padding:14px 18px;">
-        <div class="prev" id="wprevbox"></div>
-      </div>
-      <div class="icard">
-        <div class="ict" id="wiftitle">주간 실적 입력</div>
-        <div class="igrid">
-          <div class="ifd"><label>① 신규 터치 횟수</label><div class="ih">당일 첫 터치 신규 DB 수</div><input type="number" id="wf1" min="0" placeholder="0"></div>
-          <div class="ifd"><label>② 재터치 횟수 (합계)</label><div class="ih">6h + 1일 + 1주 합산</div><input type="number" id="wf2" min="0" placeholder="0"></div>
-          <div class="ifd"><label>③ TA 횟수</label><div class="ih">재터치 중 전화 시도</div><input type="number" id="wf3" min="0" placeholder="0"></div>
-          <div class="ifd"><label>④ 응답자 수</label><div class="ih">문자·전화 포함 응답 인원</div><input type="number" id="wf4" min="0" placeholder="0"></div>
-          <div class="ifd"><label>⑤ 계약 건수</label><div class="ih">최종 체결 계약 수</div><input type="number" id="wf5" min="0" placeholder="0"></div>
-          <div class="ifd"><label>⑥ 담당 DB 수</label><div class="ih">이번 주 배분받은 DB 수</div><input type="number" id="wf6" min="0" placeholder="10"></div>
-        </div>
-        <div class="srow">
-          <button class="dbtn" onclick="delWeekly()">🗑 삭제</button>
-          <button class="sbtn" id="wsavebtn" onclick="saveWeekly()">💾 저장하기</button>
-        </div>
+      <div class="srow">
+        <button class="dbtn" onclick="delDaily()">🗑 삭제</button>
+        <button class="sbtn" id="dsavebtn" onclick="saveDaily()">💾 저장하기</button>
       </div>
     </div>
+  </div>
 
-    <!-- 일간 입력 -->
-    <div class="iform" id="if-daily">
-      <div class="notice-box">📌 일간 결산은 <strong>날짜별로 하루 1회</strong> 입력합니다. 오늘 날짜가 기본 선택됩니다.</div>
-      <div class="icard" style="padding:12px 18px;">
-        <div class="ict" style="margin-bottom:10px;">📅 날짜 선택</div>
-        <input type="date" class="date-input" id="d-date" onchange="loadDailyForm()">
+    <!-- ⑤ 관리자 페이지 -->
+  <div id="v-admin" class="ct" style="display:none;">
+    <div class="admin-hero">
+      <div><h2>관리자 페이지</h2><p>팀원 권한 설정 및 데이터 관리</p></div>
+      <div class="admin-kpis">
+        <div class="admin-kpi"><div class="admin-kpi-v" id="adm-total">—</div><div class="admin-kpi-l">전체인원</div></div>
+        <div class="admin-kpi"><div class="admin-kpi-v" id="adm-active">—</div><div class="admin-kpi-l">활성</div></div>
+        <div class="admin-kpi"><div class="admin-kpi-v" id="adm-inactive">—</div><div class="admin-kpi-l">비활성</div></div>
       </div>
-      <div class="icard" id="dprevwrap" style="display:none;padding:14px 18px;">
-        <div class="prev" id="dprevbox"></div>
+    </div>
+    <div class="card" style="margin-bottom:14px;">
+      <div class="ch"><span class="cdot2"></span><h3>팀원 권한 관리</h3></div>
+      <div style="overflow-x:auto;">
+        <table class="member-tbl">
+          <thead><tr><th>이름</th><th>이메일</th><th>역할</th><th>권한 변경</th><th>가입일</th></tr></thead>
+          <tbody id="member-tbody"></tbody>
+        </table>
       </div>
-      <div class="icard">
-        <div class="ict" id="diftitle">일간 결산 입력</div>
-        <div class="igrid">
-          <div class="ifd"><label>① 신규 터치 횟수</label><div class="ih">오늘 첫 터치한 신규 DB 수</div><input type="number" id="df1" min="0" placeholder="0"></div>
-          <div class="ifd"><label>② 재터치 횟수</label><div class="ih">오늘 재접촉 합산</div><input type="number" id="df2" min="0" placeholder="0"></div>
-          <div class="ifd"><label>③ TA 횟수</label><div class="ih">오늘 전화 시도 횟수</div><input type="number" id="df3" min="0" placeholder="0"></div>
-          <div class="ifd"><label>④ 응답자 수</label><div class="ih">오늘 실제 응답 인원</div><input type="number" id="df4" min="0" placeholder="0"></div>
-          <div class="ifd"><label>⑤ 계약 건수</label><div class="ih">오늘 최종 체결 계약</div><input type="number" id="df5" min="0" placeholder="0"></div>
-          <div class="ifd" style="grid-column:1/-1;"><label>📝 메모 (특이사항, 상담 내용 등)</label>
-            <textarea id="df-memo" placeholder="오늘 상담 특이사항, 거절 유형, 성공 사례 등 자유롭게 기록하세요..." rows="3"></textarea>
+    </div>
+    <div class="card">
+      <div class="ch"><span class="cdot2"></span><h3>데이터 관리 (전체 조회·수정·삭제)</h3></div>
+      <div style="padding:14px 18px;">
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;">
+          <div class="data-tabs">
+            <button class="dtab on" id="dt-weekly" onclick="switchDataTab(&#39;weekly&#39;)">주간</button>
+            <button class="dtab" id="dt-daily" onclick="switchDataTab(&#39;daily&#39;)">일간</button>
           </div>
+          <select class="psel" id="adm-year"></select>
+          <select class="psel" id="adm-month"><option value="01">1월</option><option value="02">2월</option><option value="03">3월</option><option value="04">4월</option><option value="05">5월</option><option value="06">6월</option><option value="07">7월</option><option value="08">8월</option><option value="09">9월</option><option value="10">10월</option><option value="11">11월</option><option value="12">12월</option></select>
+          <div class="pills" id="adm-pills" style="display:flex;gap:6px;flex-wrap:wrap;"></div>
+          <button class="rbtn" onclick="loadAdminData()"><span class="sp">↻</span> 조회</button>
         </div>
-        <div class="srow">
-          <button class="dbtn" onclick="delDaily()">🗑 삭제</button>
-          <button class="sbtn" id="dsavebtn" onclick="saveDaily()">💾 저장하기</button>
+        <div style="overflow-x:auto;">
+          <table class="stbl">
+            <thead id="adm-thead"></thead>
+            <tbody id="adm-tbody"></tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- 수정 모달 -->
+  <div class="edit-modal" id="edit-modal">
+    <div class="edit-box">
+      <h3 id="modal-title">데이터 수정</h3>
+      <div class="edit-grid" id="modal-fields"></div>
+      <div class="modal-row">
+        <button class="cancel-btn" onclick="closeModal()">취소</button>
+        <button class="confirm-btn" onclick="saveModal()">저장</button>
+      </div>
+    </div>
+  </div>
 
 <div class="lmask" id="lmask"><div class="lsp"></div></div>
 <div class="toast" id="toast"></div>
@@ -600,13 +613,17 @@ async function doLogout(){
 // ── NAV ──
 function showPg(p){['auth','app'].forEach(k=>document.getElementById('pg-'+k).classList.toggle('show',k===p));}
 function showTab(t){
-  ['weekly','daily','monthly','input'].forEach(k=>{
-    document.getElementById('v-'+k).style.display=k===t?'':'none';
-    document.getElementById('nt-'+k).classList.toggle('on',k===t);
+  ['weekly','daily','monthly','input','admin'].forEach(k=>{
+    const v=document.getElementById('v-'+k);
+    const n=document.getElementById('nt-'+k);
+    if(v)v.style.display=k===t?'':'none';
+    if(n)n.classList.toggle('on',k===t);
   });
   if(t==='monthly')renderMonthly();
+  if(t==='weekly'){buildPills('dpills',dashW,w=>{dashW=w;renderWeekly();});renderWeekly();}
   if(t==='daily')renderDaily();
-  if(t==='input'){buildPills('ipipills',inputW,w=>{inputW=w;loadWeeklyForm();});loadWeeklyForm();}
+  if(t==='input'){loadDailyForm();}
+  if(t==='admin')renderAdmin();
 }
 function switchITab(t){
   ['weekly','daily'].forEach(k=>{
@@ -633,7 +650,7 @@ async function renderWeekly(silent=false){
   dashYM=getYM('dash-year','dash-month');
   if(!silent)showLoading(true);
   buildPills('dpills',dashW,w=>{dashW=w;renderWeekly();});
-  document.getElementById('dsub').textContent=dashYM+' '+dashW+' 팀 전체 현황 · 20초 자동 갱신';
+  document.getElementById('dsub').textContent=dashYM+' '+dashW+' 주간 통계 · 20초 자동 갱신';
   try{
     const rows=await SB.sel('weekly_reports','year_month=eq.'+encodeURIComponent(dashYM)+'&week=eq.'+encodeURIComponent(dashW)+'&order=contract.desc');
     setConnDot('on');
@@ -655,8 +672,8 @@ async function refreshW(){const s=document.getElementById('wrsp');s.classList.ad
 async function renderDaily(silent=false){
   const date=document.getElementById('daily-date').value||todayStr();
   if(!silent)showLoading(true);
-  document.getElementById('dailysub').textContent=date+' 팀 일간 결산';
-  document.getElementById('daily-tbl-title').textContent=date+' 일간 결산 취합표';
+  document.getElementById('dailysub').textContent=date+' 팀 일간 통계';
+  document.getElementById('daily-tbl-title').textContent=date+' 일간 통계 취합표';
   try{
     const rows=await SB.sel('daily_reports','report_date=eq.'+date+'&order=contract.desc');
     setConnDot('on');
@@ -791,7 +808,7 @@ async function delWeekly(){
 // ── DAILY INPUT ──
 async function loadDailyForm(){
   const date=document.getElementById('d-date').value||todayStr();
-  document.getElementById('diftitle').textContent=date+' 일간 결산 입력 — '+curName;
+  document.getElementById('diftitle').textContent=date+' 일간 통계 입력 — '+curName;
   const pw=document.getElementById('dprevwrap');
   try{
     const rows=await SB.sel('daily_reports','user_id=eq.'+curUser.id+'&report_date=eq.'+date+'&limit=1');
@@ -820,14 +837,14 @@ async function saveDaily(){
       contract:parseInt(document.getElementById('df5').value)||0,
       memo:document.getElementById('df-memo').value.trim(),
       saved_at:new Date().toISOString()});
-    toast('✅ '+date+' 일간 결산 저장 완료!','to');loadDailyForm();
+    toast('✅ '+date+' 일간 통계 저장 완료!','to');loadDailyForm();
   }catch(e){toast('❌ 저장 실패: '+e.message,'te');}
   finally{btn.disabled=false;btn.textContent='💾 저장하기';}
 }
 
 async function delDaily(){
   const date=document.getElementById('d-date').value||todayStr();
-  if(!confirm(date+' 일간 결산을 삭제할까요?'))return;
+  if(!confirm(date+' 일간 통계을 삭제할까요?'))return;
   try{await SB.del('daily_reports','user_id=eq.'+curUser.id+'&report_date=eq.'+date);toast('삭제됐습니다');loadDailyForm();}
   catch(e){toast('❌ '+e.message,'te');}
 }
@@ -896,21 +913,7 @@ async function ensureUserRole() {
   } catch(e) { console.error('ensureUserRole:', e); }
 }
 
-// showTab 확장 — admin 포함
-const _origShowTab = showTab;
-function showTab(t) {
-  ['weekly','daily','monthly','input','admin'].forEach(k => {
-    const v = document.getElementById('v-' + k);
-    const n = document.getElementById('nt-' + k);
-    if (v) v.style.display = k === t ? '' : 'none';
-    if (n) n.classList.toggle('on', k === t);
-  });
-  if (t === 'monthly') renderMonthly();
-  if (t === 'weekly') { buildPills('dpills', dashW, w => { dashW = w; renderWeekly(); }); renderWeekly(); }
-  if (t === 'daily') renderDaily();
-  if (t === 'input') { buildPills('ipipills', inputW, w => { inputW = w; loadWeeklyForm(); }); loadWeeklyForm(); }
-  if (t === 'admin') renderAdmin();
-}
+// showTab — admin 포함 버전으로 통합 완료
 
 // 관리자 페이지 렌더링
 async function renderAdmin() {
@@ -1095,4 +1098,4 @@ async function deleteAdminData(type, id, name) {
 
 </script>
 
-</body></html>
+</div></body></html>
