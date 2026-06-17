@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0115)file:///C:/Users/USER/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_14.html -->
+<!-- saved from url=(0115)file:///C:/Users/USER/Downloads/DB%EB%B0%98_%EC%A3%BC%EA%B0%84%EC%B7%A8%ED%95%A9%EB%B3%B4%EA%B3%A0%EC%84%9C_15.html -->
 <html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="mobile-web-app-capable" content="yes">
@@ -347,6 +347,75 @@ html,body{font-family:'Noto Sans KR',sans-serif;background:var(--g1);color:var(-
 }
 button{-webkit-tap-highlight-color:transparent;}
 
+
+/* ════ 상담현황 ════ */
+.sub-tabs{display:flex;background:var(--g1);border-radius:10px;padding:3px;margin-bottom:16px;}
+.sub-tab{flex:1;padding:8px;text-align:center;font-size:12px;font-weight:700;border:none;background:none;cursor:pointer;border-radius:8px;color:var(--g4);font-family:'Noto Sans KR',sans-serif;transition:all .2s;}
+.sub-tab.on{background:#fff;color:var(--b2);box-shadow:0 1px 4px rgba(10,45,110,.1);}
+.sub-view{display:none;}.sub-view.on{display:block;}
+.db-card{background:#fff;border-radius:var(--r);box-shadow:0 2px 8px rgba(10,45,110,.07);margin-bottom:12px;overflow:hidden;}
+.db-card-head{padding:13px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--g2);cursor:pointer;transition:background .2s;}
+.db-card-head:hover{background:var(--g1);}
+.db-card-av{width:36px;height:36px;border-radius:50%;background:var(--b2);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.db-card-name{font-size:14px;font-weight:700;color:var(--b1);}
+.db-card-info{font-size:11px;color:var(--g3);}
+.db-card-status{margin-left:auto;display:flex;align-items:center;gap:8px;}
+.status-badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700;}
+.sb-new{background:#EBF3FF;color:var(--b2);}
+.sb-progress{background:var(--aml);color:var(--am);}
+.sb-contract{background:var(--gnl);color:var(--gn);}
+.sb-hold{background:var(--g2);color:var(--g4);}
+.sb-fail{background:var(--rdl);color:var(--rd);}
+.db-card-body{padding:16px;display:none;}
+.db-card-body.open{display:block;}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.detail-field{display:flex;flex-direction:column;gap:4px;}
+.detail-field label{font-size:11px;font-weight:700;color:var(--b1);}
+.detail-field input,.detail-field select,.detail-field textarea{padding:8px 11px;border:2px solid var(--g2);border-radius:7px;font-size:13px;font-family:'Noto Sans KR',sans-serif;color:var(--tx);outline:none;transition:border-color .2s;width:100%;}
+.detail-field input:focus,.detail-field select:focus,.detail-field textarea:focus{border-color:var(--b2);}
+.detail-field textarea{resize:vertical;min-height:80px;}
+.touch-list{margin-bottom:14px;}
+.touch-item{background:var(--g1);border-radius:8px;padding:10px 12px;margin-bottom:8px;display:flex;align-items:flex-start;gap:10px;}
+.touch-item-dot{width:8px;height:8px;border-radius:50%;background:var(--b2);margin-top:5px;flex-shrink:0;}
+.touch-item-content{flex:1;}
+.touch-item-date{font-size:10px;color:var(--g3);margin-bottom:2px;}
+.touch-item-text{font-size:12px;color:var(--tx);line-height:1.6;}
+.touch-item-result{font-size:11px;font-weight:700;margin-top:3px;}
+.tr-response{color:var(--gn);}
+.tr-noanswer{color:var(--g3);}
+.tr-callback{color:var(--am);}
+.add-touch-btn{width:100%;padding:9px;background:var(--b4);color:var(--b2);border:1px dashed var(--b2);border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:14px;transition:all .2s;}
+.add-touch-btn:hover{background:var(--b2);color:#fff;}
+.photo-section{margin-bottom:14px;}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;}
+.photo-item{position:relative;aspect-ratio:1;border-radius:8px;overflow:hidden;background:var(--g2);}
+.photo-item img{width:100%;height:100%;object-fit:cover;}
+.photo-del{position:absolute;top:4px;right:4px;width:20px;height:20px;background:rgba(0,0,0,.5);color:#fff;border:none;border-radius:50%;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.photo-add{aspect-ratio:1;border-radius:8px;border:2px dashed var(--g2);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;color:var(--g3);font-size:11px;gap:4px;transition:all .2s;}
+.photo-add:hover{border-color:var(--b2);color:var(--b2);}
+.photo-add-icon{font-size:24px;}
+.db-actions{display:flex;justify-content:flex-end;gap:8px;padding-top:12px;border-top:1px solid var(--g2);}
+.new-db-btn{display:flex;align-items:center;gap:6px;padding:10px 18px;background:var(--b2);color:#fff;border:none;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Noto Sans KR',sans-serif;margin-bottom:16px;transition:background .2s;}
+.new-db-btn:hover{background:var(--b1);}
+.db-search{display:flex;gap:8px;margin-bottom:14px;}
+.db-search input{flex:1;padding:9px 13px;border:2px solid var(--g2);border-radius:8px;font-size:13px;font-family:'Noto Sans KR',sans-serif;color:var(--tx);outline:none;transition:border-color .2s;}
+.db-search input:focus{border-color:var(--b2);}
+.db-filter{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap;}
+.filter-btn{padding:5px 12px;border-radius:20px;border:1.5px solid var(--g2);font-size:11px;font-weight:700;cursor:pointer;color:var(--g4);background:#fff;font-family:'Noto Sans KR',sans-serif;transition:all .2s;}
+.filter-btn.on{border-color:var(--b2);background:var(--b4);color:var(--b2);}
+.empty-db{text-align:center;padding:40px 20px;color:var(--g3);}
+.touch-form{background:var(--b4);border-radius:8px;padding:12px 14px;margin-bottom:10px;display:none;}
+.touch-form.on{display:block;}
+.touch-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;}
+.touch-form-grid input,.touch-form-grid select{padding:7px 10px;border:2px solid var(--g2);border-radius:7px;font-size:12px;font-family:'Noto Sans KR',sans-serif;color:var(--tx);outline:none;width:100%;}
+.touch-form-grid input:focus,.touch-form-grid select:focus{border-color:var(--b2);}
+
+@media(max-width:768px){
+  .detail-grid{grid-template-columns:1fr;}
+  .photo-grid{grid-template-columns:repeat(3,1fr);}
+  .sub-tab{font-size:11px;padding:7px 6px;}
+}
+
 </style>
 </head>
 <body>
@@ -507,45 +576,73 @@ button{-webkit-tap-highlight-color:transparent;}
   <div class="view" id="view-input">
     <div class="ct">
       <div class="inp-hero" style="background:linear-gradient(135deg,#123585,var(--b2));">
-        <h2>✏️ 일간 통계 입력</h2>
-        <p>매일 일간 통계를 입력하면 주간·월간 통계가 자동으로 집계됩니다.</p>
+        <h2>✏️ 데이터 입력</h2>
+        <p>일간 통계 입력 및 상담 DB 현황을 관리합니다.</p>
       </div>
-      <div class="icard">
-        <div class="icard-title">👤 로그인 정보</div>
-        <div class="my-info">
-          <div class="my-av" id="input-av">?</div>
-          <div><div class="my-name" id="input-name">—</div><div class="my-email" id="input-email">—</div></div>
-        </div>
+
+      <!-- 하위 탭 -->
+      <div class="sub-tabs">
+        <button class="sub-tab on" id="stab-daily" onclick="goSubTab(&#39;daily&#39;)">📋 일간 통계 입력</button>
+        <button class="sub-tab" id="stab-consult" onclick="goSubTab(&#39;consult&#39;)" style="display:none;">👥 상담현황 입력</button>
       </div>
-      <div class="notice-box">📌 날짜별로 하루 1회 입력합니다. 일간 통계가 쌓이면 주간·월간 통계가 자동 집계됩니다.</div>
-      <div class="icard" style="padding:12px 18px;">
-        <div class="icard-title" style="margin-bottom:10px;">📅 날짜 선택</div>
-        <input type="date" class="date-inp" id="input-date" onchange="loadInputForm()">
-      </div>
-      <div id="input-prev" style="display:none;" class="icard">
-        <div class="prev-box" id="input-prev-box"></div>
-      </div>
-      <div class="icard">
-        <div class="icard-title" id="input-form-title">일간 통계 입력</div>
-        <div class="inp-grid">
-          <div class="inp-field"><label>① 신규 터치 횟수</label><div class="inp-hint">오늘 첫 터치한 신규 DB 수</div><input type="number" id="inp-touch" min="0" placeholder="0"></div>
-          <div class="inp-field"><label>② 재터치 횟수</label><div class="inp-hint">오늘 재접촉 합산</div><input type="number" id="inp-retouch" min="0" placeholder="0"></div>
-          <div class="inp-field"><label>③ TA 횟수</label><div class="inp-hint">오늘 전화 시도 횟수</div><input type="number" id="inp-ta" min="0" placeholder="0"></div>
-          <div class="inp-field"><label>④ 응답자 수</label><div class="inp-hint">오늘 실제 응답 인원</div><input type="number" id="inp-resp" min="0" placeholder="0"></div>
-          <div class="inp-field"><label>⑤ 계약 건수</label><div class="inp-hint">오늘 최종 체결 계약</div><input type="number" id="inp-contract" min="0" placeholder="0"></div>
-          <div class="inp-field" style="grid-column:1/-1;"><label>📝 메모</label>
-            <textarea id="inp-memo" placeholder="오늘 상담 특이사항, 거절 유형, 성공 사례 등..." rows="3"></textarea>
+
+      <!-- 하위 뷰: 일간 통계 입력 -->
+      <div class="sub-view on" id="sview-daily">
+        <div class="icard">
+          <div class="icard-title">👤 로그인 정보</div>
+          <div class="my-info">
+            <div class="my-av" id="input-av">?</div>
+            <div><div class="my-name" id="input-name">—</div><div class="my-email" id="input-email">—</div></div>
           </div>
         </div>
-        <div class="save-row">
-          <button class="del-btn" onclick="deleteInput()">🗑 삭제</button>
-          <button class="save-btn" id="input-save-btn" onclick="saveInput()">💾 저장하기</button>
+        <div class="notice-box">📌 날짜별로 하루 1회 입력합니다. 일간 통계가 쌓이면 주간·월간 통계가 자동 집계됩니다.</div>
+        <div class="icard" style="padding:12px 18px;">
+          <div class="icard-title" style="margin-bottom:10px;">📅 날짜 선택</div>
+          <input type="date" class="date-inp" id="input-date" onchange="loadInputForm()">
         </div>
+        <div id="input-prev" style="display:none;" class="icard">
+          <div class="prev-box" id="input-prev-box"></div>
+        </div>
+        <div class="icard">
+          <div class="icard-title" id="input-form-title">일간 통계 입력</div>
+          <div class="inp-grid">
+            <div class="inp-field"><label>① 신규 터치 횟수</label><div class="inp-hint">오늘 첫 터치한 신규 DB 수</div><input type="number" id="inp-touch" min="0" placeholder="0"></div>
+            <div class="inp-field"><label>② 재터치 횟수</label><div class="inp-hint">오늘 재접촉 합산</div><input type="number" id="inp-retouch" min="0" placeholder="0"></div>
+            <div class="inp-field"><label>③ TA 횟수</label><div class="inp-hint">오늘 전화 시도 횟수</div><input type="number" id="inp-ta" min="0" placeholder="0"></div>
+            <div class="inp-field"><label>④ 응답자 수</label><div class="inp-hint">오늘 실제 응답 인원</div><input type="number" id="inp-resp" min="0" placeholder="0"></div>
+            <div class="inp-field"><label>⑤ 계약 건수</label><div class="inp-hint">오늘 최종 체결 계약</div><input type="number" id="inp-contract" min="0" placeholder="0"></div>
+            <div class="inp-field" style="grid-column:1/-1;"><label>📝 메모</label>
+              <textarea id="inp-memo" placeholder="오늘 상담 특이사항, 거절 유형, 성공 사례 등..." rows="3"></textarea>
+            </div>
+          </div>
+          <div class="save-row">
+            <button class="del-btn" onclick="deleteInput()">🗑 삭제</button>
+            <button class="save-btn" id="input-save-btn" onclick="saveInput()">💾 저장하기</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 하위 뷰: 상담현황 입력 (관리자 전용) -->
+      <div class="sub-view" id="sview-consult">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap;">
+          <button class="new-db-btn" onclick="openNewDB()">+ 새 DB 고객 등록</button>
+          <div class="db-search" style="flex:1;margin:0;">
+            <input id="db-search-inp" type="text" placeholder="이름, 연락처, 메모 검색..." oninput="filterDB()">
+          </div>
+        </div>
+        <div class="db-filter" id="db-filter">
+          <button class="filter-btn on" onclick="setDBFilter(&#39;all&#39;,this)">전체</button>
+          <button class="filter-btn" onclick="setDBFilter(&#39;new&#39;,this)">신규</button>
+          <button class="filter-btn" onclick="setDBFilter(&#39;progress&#39;,this)">진행중</button>
+          <button class="filter-btn" onclick="setDBFilter(&#39;contract&#39;,this)">계약완료</button>
+          <button class="filter-btn" onclick="setDBFilter(&#39;hold&#39;,this)">보류</button>
+          <button class="filter-btn" onclick="setDBFilter(&#39;fail&#39;,this)">실패</button>
+        </div>
+        <div id="db-list"></div>
       </div>
     </div>
   </div>
 
-  <!-- ⑤ 관리자 -->
   <div class="view" id="view-admin">
     <div class="ct">
       <div class="admin-hero">
@@ -778,14 +875,20 @@ function setFormMsg(id, msg, type) {
   showLoading(true);
   SB.token = lsGet('az_token') || '';
   SB.uid   = lsGet('az_uid')   || '';
-  if (SB.token) {
+  const tokenExp = parseInt(lsGet('az_token_exp') || '0');
+  const tokenValid = SB.token && tokenExp && Date.now() < tokenExp;
+  if (tokenValid) {
     try {
       const u = await SB.getUser();
       await onLogin(u);
       return;
     } catch(e) {
       SB.token = ''; SB.uid = '';
+      lsSet('az_token', ''); lsSet('az_token_exp', '');
     }
+  } else if (SB.token) {
+    // 만료된 토큰 정리
+    lsSet('az_token', ''); lsSet('az_uid', ''); lsSet('az_token_exp', ''); lsSet('az_token_exp', '');
   }
   showPage('auth');
   showLoading(false);
@@ -818,7 +921,7 @@ function goTab(tab) {
   if (tab === 'monthly') renderMonthly();
   if (tab === 'weekly')  renderWeekly();
   if (tab === 'daily')   renderDaily();
-  if (tab === 'input')   loadInputForm();
+  if (tab === 'input')   { loadInputForm(); showConsultTab(); }
   if (tab === 'admin')   renderAdmin();
 }
 
@@ -847,7 +950,9 @@ async function doLogin() {
   btn.disabled = true; btn.textContent = '로그인 중...';
   try {
     const d = await SB.signIn(email, pw);
-    lsSet('az_token', SB.token); lsSet('az_uid', SB.uid);
+    lsSet('az_token', SB.token);
+    lsSet('az_uid', SB.uid);
+    lsSet('az_token_exp', Date.now() + 7 * 24 * 60 * 60 * 1000); // 7일
     await onLogin(d.user);
   } catch(e) {
     setFormMsg('login-msg', '❌ ' + (e.message.toLowerCase().includes('invalid') ? '이메일 또는 비밀번호가 틀렸습니다.' : e.message), 'err');
@@ -868,7 +973,9 @@ async function doSignup() {
   try {
     const d = await SB.signUp(email, pw, {display_name: name});
     if (SB.token) {
-      lsSet('az_token', SB.token); lsSet('az_uid', SB.uid);
+      lsSet('az_token', SB.token);
+      lsSet('az_uid', SB.uid);
+      lsSet('az_token_exp', Date.now() + 7 * 24 * 60 * 60 * 1000);
       await onLogin(d.user);
     } else {
       setFormMsg('signup-msg', '✅ 가입 완료! 이메일 인증 후 로그인해 주세요.', 'ok');
@@ -952,6 +1059,7 @@ async function checkRole() {
     state.isMaster = rows && rows[0] && rows[0].role === 'master';
     const adminTab = document.getElementById('tab-admin');
     if (adminTab) adminTab.style.display = state.isMaster ? '' : 'none';
+    showConsultTab();
   } catch(e) { state.isMaster = false; }
 }
 
@@ -1517,6 +1625,353 @@ async function deleteAdminRow(type, id, name) {
     await loadAdminData();
   } catch(e) { toast('❌ 삭제 실패: ' + e.message, 'err'); }
 }
+
+// ════════════════════════════════════════════════════════
+//  상담현황 (관리자 전용)
+// ════════════════════════════════════════════════════════
+let dbClients = [];
+let dbFilter = 'all';
+let expandedId = null;
+let touchForms = {};
+
+// 하위 탭 전환
+function goSubTab(t) {
+  ['daily','consult'].forEach(k => {
+    const sv = document.getElementById('sview-' + k);
+    const st = document.getElementById('stab-' + k);
+    if (sv) sv.classList.toggle('on', k === t);
+    if (st) st.classList.toggle('on', k === t);
+  });
+  if (t === 'consult') loadDBClients();
+}
+
+// 상담현황 탭 마스터에게만 표시
+function showConsultTab() {
+  const tab = document.getElementById('stab-consult');
+  if (tab) tab.style.display = state.isMaster ? '' : 'none';
+}
+
+// DB 고객 목록 로드
+async function loadDBClients() {
+  try {
+    const rows = await SB.select('db_clients', 'order=created_at.desc');
+    dbClients = rows || [];
+    renderDBList();
+  } catch(e) { toast('❌ 고객 목록 로드 실패: ' + e.message, 'err'); }
+}
+
+// 상태별 필터
+function setDBFilter(f, btn) {
+  dbFilter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('on'));
+  if (btn) btn.classList.add('on');
+  renderDBList();
+}
+
+// 검색 필터
+function filterDB() {
+  renderDBList();
+}
+
+const STATUS_LABEL = {new:'신규', progress:'진행중', contract:'계약완료', hold:'보류', fail:'실패'};
+const STATUS_CLASS = {new:'sb-new', progress:'sb-progress', contract:'sb-contract', hold:'sb-hold', fail:'sb-fail'};
+const COLORS = ['#1A6FD4','#1A8754','#D68910','#C0392B','#6C3FC4','#0D7680','#8E44AD'];
+
+function renderDBList() {
+  const list = document.getElementById('db-list');
+  if (!list) return;
+  const q = (document.getElementById('db-search-inp')?.value || '').toLowerCase();
+  let filtered = dbClients.filter(c => {
+    if (dbFilter !== 'all' && c.status !== dbFilter) return false;
+    if (q && !((c.name||'').toLowerCase().includes(q) ||
+               (c.phone||'').includes(q) ||
+               (c.memo||'').toLowerCase().includes(q))) return false;
+    return true;
+  });
+  if (!filtered.length) {
+    list.innerHTML = '<div class="empty-db"><div class="empty-icon">👥</div><p>등록된 고객이 없습니다.</p></div>';
+    return;
+  }
+  list.innerHTML = filtered.map((c, i) => {
+    const col = COLORS[i % COLORS.length];
+    const isOpen = expandedId === c.id;
+    const sc = STATUS_CLASS[c.status] || 'sb-new';
+    const sl = STATUS_LABEL[c.status] || c.status;
+    const created = c.created_at ? new Date(c.created_at).toLocaleDateString('ko-KR') : '';
+    return `<div class="db-card" id="dbc-${c.id}">
+      <div class="db-card-head" onclick="toggleDBCard('${c.id}')">
+        <div class="db-card-av" style="background:${col}">${(c.name||'?').charAt(0)}</div>
+        <div>
+          <div class="db-card-name">${c.name || '이름 없음'}</div>
+          <div class="db-card-info">${c.phone || '연락처 없음'} · ${c.age ? c.age + '세' : '—'} · 등록 ${created}</div>
+        </div>
+        <div class="db-card-status">
+          <span class="status-badge ${sc}">${sl}</span>
+          <span style="color:var(--g3);font-size:14px">${isOpen ? '▲' : '▼'}</span>
+        </div>
+      </div>
+      <div class="db-card-body ${isOpen ? 'open' : ''}" id="dbcb-${c.id}">
+        ${renderDBForm(c)}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function toggleDBCard(id) {
+  expandedId = expandedId === id ? null : id;
+  renderDBList();
+  if (expandedId) loadTouchLogs(expandedId);
+}
+
+function renderDBForm(c) {
+  return `
+    <div class="detail-grid">
+      <div class="detail-field"><label>이름</label><input type="text" id="df-name-${c.id}" value="${c.name||''}"></div>
+      <div class="detail-field"><label>연락처</label><input type="text" id="df-phone-${c.id}" value="${c.phone||''}" placeholder="010-0000-0000"></div>
+      <div class="detail-field"><label>나이</label><input type="number" id="df-age-${c.id}" value="${c.age||''}" placeholder="예: 42"></div>
+      <div class="detail-field"><label>성별</label>
+        <select id="df-gender-${c.id}">
+          <option value="">선택</option>
+          <option value="남" ${c.gender==='남'?'selected':''}>남</option>
+          <option value="여" ${c.gender==='여'?'selected':''}>여</option>
+        </select>
+      </div>
+      <div class="detail-field"><label>월 예산</label><input type="text" id="df-budget-${c.id}" value="${c.budget||''}" placeholder="예: 10~15만원"></div>
+      <div class="detail-field"><label>상태</label>
+        <select id="df-status-${c.id}">
+          <option value="new"      ${c.status==='new'?'selected':''}>신규</option>
+          <option value="progress" ${c.status==='progress'?'selected':''}>진행중</option>
+          <option value="contract" ${c.status==='contract'?'selected':''}>계약완료</option>
+          <option value="hold"     ${c.status==='hold'?'selected':''}>보류</option>
+          <option value="fail"     ${c.status==='fail'?'selected':''}>실패</option>
+        </select>
+      </div>
+      <div class="detail-field" style="grid-column:1/-1"><label>니즈 / 관심 담보</label>
+        <input type="text" id="df-needs-${c.id}" value="${c.needs||''}" placeholder="예: 암진단비, 뇌혈관, 심장">
+      </div>
+      <div class="detail-field" style="grid-column:1/-1"><label>건강 특이사항</label>
+        <textarea id="df-health-${c.id}" rows="2" placeholder="최근 3년 내 입원·수술 여부, 복약 중인 약물 등">${c.health_note||''}</textarea>
+      </div>
+      <div class="detail-field" style="grid-column:1/-1"><label>메모</label>
+        <textarea id="df-memo-${c.id}" rows="3" placeholder="상담 내용, 특이사항 등 자유롭게 기록">${c.memo||''}</textarea>
+      </div>
+    </div>
+
+    <!-- 터치 이력 -->
+    <div style="font-size:12px;font-weight:700;color:var(--b1);margin-bottom:8px;">📞 터치 이력</div>
+    <div class="touch-list" id="touch-list-${c.id}">
+      <div style="font-size:12px;color:var(--g3);padding:8px 0;">불러오는 중...</div>
+    </div>
+    <button class="add-touch-btn" onclick="toggleTouchForm('${c.id}')">+ 터치 이력 추가</button>
+    <div class="touch-form" id="touch-form-${c.id}">
+      <div class="touch-form-grid">
+        <input type="date" id="tf-date-${c.id}" value="${new Date().toISOString().slice(0,10)}">
+        <select id="tf-type-${c.id}">
+          <option value="문자">문자</option>
+          <option value="전화">전화</option>
+          <option value="카카오">카카오</option>
+          <option value="방문">방문</option>
+        </select>
+        <select id="tf-result-${c.id}">
+          <option value="응답">응답</option>
+          <option value="미응답">미응답</option>
+          <option value="콜백요청">콜백요청</option>
+          <option value="거절">거절</option>
+          <option value="관심">관심</option>
+        </select>
+        <input type="text" id="tf-note-${c.id}" placeholder="메모 (선택)">
+      </div>
+      <div style="display:flex;gap:6px;justify-content:flex-end;">
+        <button onclick="toggleTouchForm('${c.id}')" style="padding:6px 12px;background:var(--g1);border:1px solid var(--g2);border-radius:7px;font-size:12px;cursor:pointer;">취소</button>
+        <button onclick="saveTouchLog('${c.id}')" style="padding:6px 14px;background:var(--b2);color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;">저장</button>
+      </div>
+    </div>
+
+    <!-- 대화 캡쳐 사진 -->
+    <div style="font-size:12px;font-weight:700;color:var(--b1);margin:12px 0 8px;">📷 대화 캡쳐 사진</div>
+    <div class="photo-grid" id="photo-grid-${c.id}">
+      ${renderPhotos(c.id, c.photos || [])}
+    </div>
+
+    <!-- 저장/삭제 버튼 -->
+    <div class="db-actions">
+      <button onclick="deleteDBClient('${c.id}')" style="padding:9px 16px;background:var(--rdl);color:var(--rd);border:1px solid var(--rd);border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;">🗑 삭제</button>
+      <button onclick="saveDBClient('${c.id}')" style="padding:9px 20px;background:var(--b2);color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;">💾 저장</button>
+    </div>`;
+}
+
+function renderPhotos(clientId, photos) {
+  const items = (photos || []).map((url, i) =>
+    `<div class="photo-item">
+      <img src="${url}" onclick="viewPhoto('${url}')" style="cursor:pointer;">
+      <button class="photo-del" onclick="deletePhoto('${clientId}',${i})">✕</button>
+    </div>`
+  ).join('');
+  const addBtn = `<div class="photo-add" onclick="document.getElementById('photo-inp-${clientId}').click()">
+    <div class="photo-add-icon">📷</div>
+    <div>사진 추가</div>
+    <input type="file" id="photo-inp-${clientId}" accept="image/*" multiple style="display:none" onchange="uploadPhotos('${clientId}',this)">
+  </div>`;
+  return items + addBtn;
+}
+
+// 사진 원본 보기
+function viewPhoto(url) {
+  const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer;padding:20px;';
+  overlay.innerHTML = `<img src="${url}" style="max-width:100%;max-height:90vh;border-radius:8px;object-fit:contain;">`;
+  overlay.onclick = () => document.body.removeChild(overlay);
+  document.body.appendChild(overlay);
+}
+
+// 사진 업로드 (Base64로 Supabase 저장)
+async function uploadPhotos(clientId, input) {
+  const files = Array.from(input.files);
+  if (!files.length) return;
+  toast('📷 사진 업로드 중...', '');
+  try {
+    const client = dbClients.find(c => c.id === clientId);
+    const existing = client?.photos || [];
+    const newPhotos = await Promise.all(files.map(f => new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload = e => res(e.target.result);
+      reader.onerror = rej;
+      reader.readAsDataURL(f);
+    })));
+    const allPhotos = [...existing, ...newPhotos];
+    await SB.patch('db_clients', 'id=eq.' + clientId, { photos: allPhotos, updated_at: new Date().toISOString() });
+    if (client) client.photos = allPhotos;
+    const grid = document.getElementById('photo-grid-' + clientId);
+    if (grid) grid.innerHTML = renderPhotos(clientId, allPhotos);
+    toast('✅ 사진 업로드 완료', 'ok');
+  } catch(e) { toast('❌ 업로드 실패: ' + e.message, 'err'); }
+  input.value = '';
+}
+
+// 사진 삭제
+async function deletePhoto(clientId, idx) {
+  if (!confirm('이 사진을 삭제할까요?')) return;
+  try {
+    const client = dbClients.find(c => c.id === clientId);
+    const photos = [...(client?.photos || [])];
+    photos.splice(idx, 1);
+    await SB.patch('db_clients', 'id=eq.' + clientId, { photos, updated_at: new Date().toISOString() });
+    if (client) client.photos = photos;
+    const grid = document.getElementById('photo-grid-' + clientId);
+    if (grid) grid.innerHTML = renderPhotos(clientId, photos);
+    toast('🗑 삭제됐습니다');
+  } catch(e) { toast('❌ 삭제 실패: ' + e.message, 'err'); }
+}
+
+// 터치 이력 로드
+async function loadTouchLogs(clientId) {
+  const list = document.getElementById('touch-list-' + clientId);
+  if (!list) return;
+  try {
+    const rows = await SB.select('db_touch_logs', 'client_id=eq.' + clientId + '&order=touch_date.desc,created_at.desc');
+    if (!rows.length) {
+      list.innerHTML = '<div style="font-size:12px;color:var(--g3);padding:6px 0;">아직 터치 이력이 없습니다.</div>';
+      return;
+    }
+    const RESULT_CLASS = { 응답:'tr-response', 미응답:'tr-noanswer', 콜백요청:'tr-callback', 거절:'rb rb-low', 관심:'tr-response' };
+    list.innerHTML = rows.map(r => `
+      <div class="touch-item">
+        <div class="touch-item-dot"></div>
+        <div class="touch-item-content">
+          <div class="touch-item-date">${r.touch_date} · ${r.touch_type||''}</div>
+          <div class="touch-item-text">${r.note || '—'}</div>
+          <div class="touch-item-result ${RESULT_CLASS[r.result]||''}">${r.result||''}</div>
+        </div>
+        <button onclick="deleteTouchLog('${r.id}','${clientId}')" style="background:none;border:none;color:var(--g3);cursor:pointer;font-size:12px;padding:2px 6px;">✕</button>
+      </div>`).join('');
+  } catch(e) { console.error(e); }
+}
+
+// 터치 폼 토글
+function toggleTouchForm(clientId) {
+  const form = document.getElementById('touch-form-' + clientId);
+  if (form) form.classList.toggle('on');
+}
+
+// 터치 이력 저장
+async function saveTouchLog(clientId) {
+  const date   = document.getElementById('tf-date-' + clientId)?.value || new Date().toISOString().slice(0,10);
+  const type   = document.getElementById('tf-type-' + clientId)?.value || '';
+  const result = document.getElementById('tf-result-' + clientId)?.value || '';
+  const note   = document.getElementById('tf-note-' + clientId)?.value?.trim() || '';
+  try {
+    await SB.upsert('db_touch_logs', { client_id: clientId, touch_date: date, touch_type: type, result, note });
+    toast('✅ 터치 이력 저장 완료', 'ok');
+    toggleTouchForm(clientId);
+    await loadTouchLogs(clientId);
+  } catch(e) { toast('❌ 저장 실패: ' + e.message, 'err'); }
+}
+
+// 터치 이력 삭제
+async function deleteTouchLog(logId, clientId) {
+  if (!confirm('이 터치 이력을 삭제할까요?')) return;
+  try {
+    await SB.delete('db_touch_logs', 'id=eq.' + logId);
+    toast('🗑 삭제됐습니다');
+    await loadTouchLogs(clientId);
+  } catch(e) { toast('❌ 삭제 실패: ' + e.message, 'err'); }
+}
+
+// DB 고객 저장
+async function saveDBClient(clientId) {
+  const body = {
+    name:        document.getElementById('df-name-'   + clientId)?.value?.trim() || '',
+    phone:       document.getElementById('df-phone-'  + clientId)?.value?.trim() || '',
+    age:         parseInt(document.getElementById('df-age-' + clientId)?.value) || null,
+    gender:      document.getElementById('df-gender-' + clientId)?.value || '',
+    budget:      document.getElementById('df-budget-' + clientId)?.value?.trim() || '',
+    status:      document.getElementById('df-status-' + clientId)?.value || 'new',
+    needs:       document.getElementById('df-needs-'  + clientId)?.value?.trim() || '',
+    health_note: document.getElementById('df-health-' + clientId)?.value?.trim() || '',
+    memo:        document.getElementById('df-memo-'   + clientId)?.value?.trim() || '',
+    updated_at:  new Date().toISOString(),
+  };
+  try {
+    await SB.patch('db_clients', 'id=eq.' + clientId, body);
+    const idx = dbClients.findIndex(c => c.id === clientId);
+    if (idx >= 0) dbClients[idx] = { ...dbClients[idx], ...body };
+    toast('✅ 저장 완료', 'ok');
+    renderDBList();
+  } catch(e) { toast('❌ 저장 실패: ' + e.message, 'err'); }
+}
+
+// DB 고객 삭제
+async function deleteDBClient(clientId) {
+  if (!confirm('이 고객 정보를 삭제할까요? 터치 이력도 함께 삭제됩니다.')) return;
+  try {
+    await SB.delete('db_clients', 'id=eq.' + clientId);
+    dbClients = dbClients.filter(c => c.id !== clientId);
+    expandedId = null;
+    toast('🗑 삭제됐습니다');
+    renderDBList();
+  } catch(e) { toast('❌ 삭제 실패: ' + e.message, 'err'); }
+}
+
+// 새 DB 고객 등록
+async function openNewDB() {
+  const name = prompt('고객 이름을 입력하세요:');
+  if (!name?.trim()) return;
+  try {
+    const rows = await SB.upsert('db_clients', {
+      created_by: state.user.id,
+      name: name.trim(),
+      status: 'new',
+      photos: [],
+    });
+    toast('✅ 새 고객이 등록됐습니다', 'ok');
+    await loadDBClients();
+    if (rows && rows[0]) {
+      expandedId = rows[0].id;
+      renderDBList();
+    }
+  } catch(e) { toast('❌ 등록 실패: ' + e.message, 'err'); }
+}
+
 </script>
 
 <script>
